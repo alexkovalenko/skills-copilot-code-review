@@ -17,6 +17,10 @@
       <h2>Extracurricular Activities</h2>
       <div id="user-controls">
         <div id="user-status">
+          <button id="announcements-button" class="icon-button hidden" title="Manage Announcements">
+            <span>📢</span>
+            <span>Announcements</span>
+          </button>
           <button id="login-button" class="icon-button">
             <span class="user-icon">👤</span>
             <span>Login</span>
@@ -28,6 +32,9 @@
         </div>
       </div>
     </header>
+
+    <!-- Active Announcements Banner -->
+    <div id="announcements-banner" class="announcements-banner hidden"></div>
 
     <main>
       <section id="activities-container">
@@ -131,6 +138,54 @@
           <button type="submit">Login</button>
         </form>
         <div id="login-message" class="hidden message"></div>
+      </div>
+    </div>
+
+    <!-- Announcements Management Modal -->
+    <div id="announcements-modal" class="modal hidden">
+      <div class="modal-content announcements-modal-content">
+        <span class="close-announcements-modal">&times;</span>
+        <div class="announcements-modal-header">
+          <h3>📢 Manage Announcements</h3>
+          <button id="add-announcement-button" class="add-announcement-btn">+ New Announcement</button>
+        </div>
+
+        <!-- Announcement Form (hidden by default) -->
+        <div id="announcement-form-container" class="announcement-form-container hidden">
+          <h4 id="announcement-form-title">New Announcement</h4>
+          <form id="announcement-form">
+            <input type="hidden" id="announcement-id" value="" />
+            <div class="form-group">
+              <label for="ann-title">Title <span class="required">*</span></label>
+              <input type="text" id="ann-title" required placeholder="e.g. Spring Activity Fair" maxlength="120" />
+            </div>
+            <div class="form-group">
+              <label for="ann-message">Message <span class="required">*</span></label>
+              <textarea id="ann-message" required placeholder="Enter the announcement details..." rows="3" maxlength="500"></textarea>
+            </div>
+            <div class="form-row">
+              <div class="form-group">
+                <label for="ann-start-date">Start Date <span class="optional">(optional)</span></label>
+                <input type="date" id="ann-start-date" />
+              </div>
+              <div class="form-group">
+                <label for="ann-expiration-date">Expiration Date <span class="required">*</span></label>
+                <input type="date" id="ann-expiration-date" required />
+              </div>
+            </div>
+            <div class="form-actions">
+              <button type="button" id="cancel-announcement-form" class="btn-secondary">Cancel</button>
+              <button type="submit" id="save-announcement-button" class="btn-primary">Save Announcement</button>
+            </div>
+          </form>
+        </div>
+
+        <!-- Announcements List -->
+        <div id="announcements-list-container">
+          <div id="announcements-management-list">
+            <p class="loading-text">Loading announcements...</p>
+          </div>
+        </div>
       </div>
     </div>
 
